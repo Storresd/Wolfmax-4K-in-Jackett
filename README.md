@@ -1,0 +1,1 @@
+Buenas, tuve bastantes problemas para añadir diferentes indexadores en Jackett, pero tras investigar y consultar con la IA, conseguí crear un contenedor docker proxy para vincularlo con Jackett y así poder hacer que se pueda comunicar con las web sin problemas.
