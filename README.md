@@ -2,11 +2,14 @@ Buenas, tuve bastantes problemas para añadir diferentes indexadores en Jackett,
 
 <img width="889" height="446" alt="image" src="https://github.com/user-attachments/assets/6a5ec3db-3eac-4d63-887a-da4e2834ae4b" />
 
+
 Lo que tendremos que hacer, es desplegar un contenedor docket usando la imagen Gluetun (es un contenedor open source que hace de cliente VPN y trae de serie un servidor proxy SOCKS5 (y también HTTP) integrado, compatible directamente con ProtonVPN entre otros muchos proveedores).
 En mi caso estoy utilizando la versión gratuita de ProtonVPN. Una vez nos creamos una cuenta nos dirigimos a las siguientes opciones para configurarlo con un servidor proxy:
 
 <img width="1635" height="654" alt="image" src="https://github.com/user-attachments/assets/b6c7a1dd-14b5-4a18-8ffe-87d0bb93b3b9" />
+
 En primera instancia aparecerá Download.
+
 
 Una vez entrado en ese apartado, escribiremos un nombre, seleccionamos la opción Enrutador y Crear.
 
