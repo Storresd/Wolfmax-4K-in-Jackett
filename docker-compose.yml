@@ -1,0 +1,30 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun            # Imagen oficial de Gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN                    # Necesario para que Gluetun pueda gestionar rutas e iptables dentro del contenedor
+    devices:
+      - /dev/net/tun:/dev/net/tun    # Da acceso al dispositivo TUN, imprescindible para levantar el túnel WireGuard
+    ports:
+      - "8888:8888"                  # Proxy HTTP — este SÍ funciona, es la vía recomendada
+      - "1080:1080"                # Puerto "clásico" de SOCKS5 — se deja documentado a modo de referencia,
+                                      # pero en versiones actuales de Gluetun no existe variable que lo active (ver nota arriba)
+    environment:
+      # --- Proveedor VPN personalizado ---
+      - VPN_SERVICE_PROVIDER=custom  # "custom" = usamos nuestro propio perfil, sin selección automática de servidor por parte de Gluetun
+      - VPN_TYPE=wireguard
+
+      # --- Datos del perfil WireGuard ---
+      - WIREGUARD_PRIVATE_KEY=****    # Campo "PrivateKey" del bloque [Interface] de tu .conf — trátalo como una contraseña
+      - WIREGUARD_ADDRESSES=****      # Campo "Address" del bloque [Interface] de tu .conf (formato tipo 10.x.x.x/32)
+      - WIREGUARD_PUBLIC_KEY=****     # Campo "PublicKey" del bloque [Peer] de tu .conf
+      - WIREGUARD_ENDPOINT_IP=****    # Parte IP del campo "Endpoint" del bloque [Peer] de tu .conf
+      - WIREGUARD_ENDPOINT_PORT=51820 # Parte del puerto del campo "Endpoint" — en ProtonVPN suele ser siempre 51820
+
+      # --- Firewall interno de Gluetun ---
+      - FIREWALL_OUTBOUND_SUBNETS=192.168.1.0/24	# ⚠️ CAMBIA esto por la subred real de tu red local
+      # --- Proxy HTTP integrado ---
+      - HTTPPROXY=on                  # Activa el proxy HTTP en el puerto 8888 (por defecto viene desactivado)
+
+    restart: unless-stopped
