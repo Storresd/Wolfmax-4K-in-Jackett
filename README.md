@@ -1,6 +1,6 @@
 Buenas, tuve bastantes problemas para añadir diferentes indexadores en Jackett, pero tras investigar y consultar con la IA, conseguí crear un contenedor docker proxy para vincularlo con Jackett y así poder hacer que se pueda comunicar con las web sin problemas.
 
-<img width="883" height="407" alt="image" src="https://github.com/user-attachments/assets/a4411c9a-d973-4861-b639-5eeddf5af1d8" />
+<img width="889" height="446" alt="image" src="https://github.com/user-attachments/assets/6a5ec3db-3eac-4d63-887a-da4e2834ae4b" />
 
 Lo que tendremos que hacer, es desplegar un contenedor docket usando la imagen Gluetun (es un contenedor open source que hace de cliente VPN y trae de serie un servidor proxy SOCKS5 (y también HTTP) integrado, compatible directamente con ProtonVPN entre otros muchos proveedores).
 En mi caso estoy utilizando la versión gratuita de ProtonVPN. Una vez nos creamos una cuenta nos dirigimos a las siguientes opciones para configurarlo con un servidor proxy:
